@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+  <head>
+    <meta charset="utf-8">
+    <title>SEARCH RESULT PAGE</title>
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+
+
+  <body>
+
+    {% block navigation-bar %}
+      {% include 'time_search/navigation_bar.html' %}
+    {% endblock %}
+
+    <br>
+
+    <div class="textarea-white">
+
+      <div align="center">
+        <p class="sub-title">接近情報</p>
+      </div>
+
+      <div class="dep-stop selected-stop-header">
+        <p>出発地</p>
+      </div>
+
+      <div class="arr-stop selected-stop-header">
+        <p>到着地</p>
+      </div>
+
+      <br class="cb">
+
+      <div class="dep-stop selected-stop">
+        <p id="dep_stop">{{ dep_stop_name }}</p>
+      </div>
+
+      <div class="arr-stop selected-stop">
+        <p id="arr_stop">{{ arr_stop_name }}</p>
+      </div>
+
+      <br class="cb">
+
+      <br>
+
+      <div align="center">
+        <p>{{ collect_time }} 現在</p>
+        <form action="{% url 'time_search:result' %}" method="get">
+          <input type="hidden" name="dep_stop_name" value="{{ dep_stop_name }}">
+          <input type="hidden" name="arr_stop_name" value="{{ arr_stop_name }}">
+          <a href="{% url 'time_search:result' %}"><input class="btn-update" type="submit" name="" value="UPDATE"></a>
+        </form>
+      </div>
+
+      <br><br>
+
+      {% for g in guides %}
+
+        {% if not g.delay_t == 0 %}
+
+          <table class="delayed-frame">
+            <tr>
+              <td>{{ g.line_id }}</td>
+              <td class="delayed-normal bus-time">{{ g.dep_t }} <i class="fa fa-caret-right"></i> {{ g.arr_delay_t }}</td>
+              <td rowspan="2">
+                <p class="delayed"> <i class="fa fa-clock"></i> &nbsp; {{ g.delay_t }}分遅延</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="delayed_box">遅延あり</td>
+              <td class="delayed bus-time">{{ g.dep_delay_t}} <i class="fa fa-caret-right"></i> {{ g.arr_delay_t }}</td>
+            </tr>
+          </table>
+
+        {% else %}
+
+          <table class="normal-frame">
+            <tr>
+              <td>{{ g.line_id }}</td>
+              <td class="bus-time">{{ g.dep_t }} <i class="fa fa-caret-right"></i> {{ g.arr_delay_t }}</td>
+              <td rowspan="2">
+                <p> <i class="fa fa-clock"></i> &nbsp; 通常運行 </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="normal_box">遅延なし</td>
+              <td class="bus-time"> --- </td>
+            </tr>
+          </table>
+
+        {% endif %}
+
+        <br>
+
+      {% endfor %}
+
+    </div>
+
+    <br><br>
+
+
+  </body>
+
+
+</html>

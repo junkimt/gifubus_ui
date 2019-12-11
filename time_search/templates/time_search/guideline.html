@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>GUIDELINE</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body>
+
+    {% block navigation-bar %}
+      {% include 'time_search/navigation_bar.html' %}
+    {% endblock %}
+
+    <div class="top-image cb">
+      <img src="{% static 'time_search/bus2.jpg' %}">
+      <p>岐阜バスをもっと快適に</p>
+    </div>
+
+    <br><br><br>
+
+    <div class="textarea-white position-center">
+
+      <br>
+
+      <h1>GifuBusUI とは</h1>
+
+      <div class="position-center usage">
+        <p class="usage">GifuBusUI はいつも使うバス停の時刻検索をより簡単にし、遅延情報も考慮した時刻表示をしてくれるWebアプリです。</p>
+        <p class="usage">さらに、遅延のデータを収集し分析することで、バス停ごとにどれくらい遅延するかの予測を行うことができます。</p>
+      </div>
+
+      <h1>使い方</h1>
+
+      <table class="usage">
+        <tr>
+          <td>
+            <div class="usage">
+              <h2>バス停の選択はボタン操作だけ</h2>
+              <p>いつも使うバス停なので、毎回テキストで入力するのは面倒。</p>
+              <p>よく使うバス停をボタンで用意しているので、タッチするだけでバス停を選択できます。</p>
+            </div>
+          </td>
+          <td class="concept-image">
+            <img src="{% static 'time_search/demo_search.png' %}">
+          </td>
+        </tr>
+      </table>
+
+      <table class="usage">
+        <tr>
+          <td class="concept-image">
+            <img src="{% static 'time_search/demo_search_result.png' %}">
+          </td>
+          <td>
+            <div class="usage">
+              <h2>遅延で並び替えた時刻表</h2>
+              <p>バスは予想以上によく遅延が発生します。</p>
+              <p>バス停ごとに遅延情報を取得し、遅延した出発時間で並び替えた時刻表を提供します。</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table class="usage">
+        <tr>
+          <td>
+            <div class="usage">
+              <h2>遅延情報の分析</h2>
+              <p>バス停ごとに、遅延のしやすさは大きく異なります。</p>
+              <p>バス停ごとの遅延情報を大量に使用して、遅延の分析・予測を行います。</p>
+            </div>
+          </td>
+          <td class="concept-image">
+            <img src="{% static 'time_search/.png' %}">
+          </td>
+        </tr>
+      </table>
+
+      <br>
+
+    </div>
+
+    <br><br>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{% block navigation-bar %}
+  <p class="app-title float-left">GifuBusUI</p>
+
+  <div class="text-white">
+    <p class="float-right">
+      <a class="nav-bar" href="{% url 'time_search:analysis' %}">ANALYSIS</a>
+    </p>
+    <p class="float-right">
+      <a class="nav-bar" href="{% url 'time_search:index' %}">SEARCH</a>
+    </p>
+    <p class="float-right">
+      <a class="nav-bar" href="{% url 'time_search:guideline' %}">GUIDELINE</a>
+    </p>
+  </div>
+
+  <hr class="cb">
+{% endblock %}

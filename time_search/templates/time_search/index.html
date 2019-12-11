@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <title>SEARCH</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+  </head>
+
+  <body>
+
+    {% block navigation-bar %}
+      {% include 'time_search/navigation_bar.html' %}
+    {% endblock %}
+
+    <br>
+
+    <div class="textarea-white">
+
+      <div align="center">
+        <p class="sub-title">時刻検索</p>
+      </div>
+
+      <form action="{% url 'time_search:result' %}" method="get" onsubmit="return check();">
+        {% csrf_token %}
+
+        <div class="dep-stop selected-stop-header">
+          <p>出発地</p>
+        </div>
+
+        <div class="arr-stop selected-stop-header">
+          <p>到着地</p>
+        </div>
+
+        <br class="cb">
+
+        <div class="dep-stop selected-stop">
+          <p id="dep_stop">出発地のバス停名</p>
+          <input class="selected-dep-stop" name="dep_stop_name" type="hidden" value="出発地のバス停名">
+        </div>
+
+        <div class="arr-stop selected-stop">
+          <p id="arr_stop">到着地のバス停名</p>
+          <input class="selected-arr-stop" name="arr_stop_name" type="hidden" value="到着地のバス停名">
+        </div>
+
+        <br class="cb">
+
+        <br>
+
+        <div class="bus-img">
+          <img src="{% static 'time_search/bus_red_white.png' %}">
+        </div>
+
+        <br>
+        <!--
+        <p class="btn-search" type="submit">検索</p>
+        -->
+        <div align="center">
+          <input class="btn-search" type="submit" name="" value="検索">
+        </div>
+
+        <br><br>
+
+        <div class="dep-stop">
+          {% for s in bus_stops %}
+            <p class="dep_stop_btn btn-flat-simple">{{ s }}</p>
+            <br>
+          {% endfor %}
+        </div>
+
+        <div class="arr-stop">
+          {% for s in bus_stops %}
+            <p class="arr_stop_btn btn-flat-simple">{{ s }}</p>
+            <br>
+          {% endfor %}
+        </div>
+
+        <br class="cb">
+
+      </form>
+
+      <br><br>
+
+    </div>
+
+    <br><br>
+
+  </body>
+
+
+
+</html>
