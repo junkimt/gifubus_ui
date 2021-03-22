@@ -12,5 +12,5 @@ chromedriver-binary==76.0.3809.68.0
 django-pandas==0.6.1
 pandas==0.23.4
 selenium==3.141.0
-requests==2.20.0
+requests==2.22.0
 lxml==4.2.5
